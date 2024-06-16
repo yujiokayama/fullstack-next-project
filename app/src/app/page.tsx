@@ -14,6 +14,7 @@ export default function Home() {
           alignItems: "center",
         }}
       >
+        <h1>Next.js with TypeScript example</h1>
       </Box>
     </Container>
   );
