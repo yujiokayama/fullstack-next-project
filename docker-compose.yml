@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    build: ./docker/app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+    tty: true
+    environment:
+      - WATCHPACK_POLLING=true
+    command: sh -c "yarn dev" # 初回コンテナ立ち上げ時はコメントアウトしておく
