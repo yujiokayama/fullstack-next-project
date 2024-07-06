@@ -9,4 +9,14 @@ services:
     tty: true
     environment:
       - WATCHPACK_POLLING=true
-    command: sh -c "yarn dev" # 初回コンテナ立ち上げ時はコメントアウトしておく
+    command: sh -c "yarn dev" # コンテナビルドが終わったら一旦コンテナ停止をして、コメントアウトを外す
+    depends_on:
+      - server
+  server:
+    build: ./docker/server
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server:/server
+    tty: true
+    command: sh -c "yarn start:dev" # コンテナビルドが終わったら一旦コンテナ停止をして、コメントアウトを外す
